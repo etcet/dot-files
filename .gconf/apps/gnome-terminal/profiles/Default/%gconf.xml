@@ -1,11 +1,5 @@
 <?xml version="1.0"?>
 <gconf>
-	<entry name="font" mtime="1327860065" type="string">
-		<stringvalue>Inconsolata Medium 12</stringvalue>
-	</entry>
-	<entry name="visible_name" mtime="1327860065" type="string">
-		<stringvalue>Default</stringvalue>
-	</entry>
 	<entry name="alternate_screen_scroll" mtime="1327860065" type="bool" value="true"/>
 	<entry name="silent_bell" mtime="1327860065" type="bool" value="true"/>
 	<entry name="default_show_menubar" mtime="1327860065" type="bool" value="false"/>
@@ -13,7 +7,6 @@
 		<stringvalue>hidden</stringvalue>
 	</entry>
 	<entry name="scrollback_unlimited" mtime="1327860065" type="bool" value="true"/>
-	<entry name="use_system_font" mtime="1327860065" type="bool" value="false"/>
 	<entry name="use_theme_colors" mtime="1327860065" type="bool" value="false"/>
 	<entry name="bold_color" mtime="1327860065" type="string">
 		<stringvalue>#58586E6E7575</stringvalue>
