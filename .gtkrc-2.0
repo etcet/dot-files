@@ -2,4 +2,13 @@ gtk-xft-antialias=1
 gtk-xft-hinting=1
 gtk-xft-hintstyle="hintfull"
 gtk-xft-rgba="rgb"
-include "$HOME/.gtkrc-2.0.mine"
+
+#dark
+style "vimfix" {
+  bg[NORMAL] = "#002b36"
+}
+#light
+#style "vimfix" {
+#  bg[NORMAL] = "#fdf6e3"
+#}
+widget "vim-main-window.*GtkForm" style "vimfix"
