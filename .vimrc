@@ -21,16 +21,12 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 Bundle 'tpope/vim-fugitive',
-<<<<<<< HEAD
 Bundle 'Lokaltog/vim-powerline',
 Bundle 'majutsushi/tagbar.git',
-=======
->>>>>>> edb0531a456aa9f8c6ac064838032bcb5a8c9cf6
 Bundle 'wincent/Command-T',
 let g:CommandTScanDotDirectories=1
 
 filetype plugin indent on
-<<<<<<< HEAD
 
 "powerline
 set laststatus=2
@@ -46,5 +42,3 @@ endif
 "tagbar
 let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
-=======
->>>>>>> edb0531a456aa9f8c6ac064838032bcb5a8c9cf6
