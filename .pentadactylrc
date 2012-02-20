@@ -1,0 +1,16 @@
+"1.0rc1
+
+loadplugins '\.(js|penta)$'
+group user
+map -count -modes=n,v -silent <A-f> <count>:flashtoggle<Return>
+map -count -modes=n,v <A-s> <count>:set<Space>noscript-sites!=<A-Tab>
+map -count -modes=n,v <A-S-F> <count>:set<Space>fbwhitelist!=<A-Tab>
+map -count -modes=n,v <A-S-S> <count>:set<Space>noscript-tempsites!=<A-Tab>
+map -count -modes=n,v <C-A-s> <count>:set<Space>noscript-untrusted!=<A-Tab>
+map -count -modes=n,v c <count>:sidebar!<Space>Console<Return>
+map -count -modes=n,v <C-S-B> <count>:toolbartoggle<Space>Bookmarks<Space>Toolbar<Return>
+set editor='C:\\Program\ Files\ (x86)\\Vim\\vim73\\gvim.exe -f +<line> +"sil! call cursor(0, <column>)" <file>'
+set fbwhitelist=grooveshark.com,youtube.com
+set scroll=10
+
+" vim: set ft=pentadactyl:
