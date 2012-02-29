@@ -2,15 +2,106 @@
 
 loadplugins '\.(js|penta)$'
 group user
-map -count -modes=n,v -silent <A-f> <count>:flashtoggle<Return>
-map -count -modes=n,v <A-s> <count>:set<Space>noscript-sites!=<A-Tab>
-map -count -modes=n,v <A-S-F> <count>:set<Space>fbwhitelist!=<A-Tab>
-map -count -modes=n,v <A-S-S> <count>:set<Space>noscript-tempsites!=<A-Tab>
-map -count -modes=n,v <C-A-s> <count>:set<Space>noscript-untrusted!=<A-Tab>
-map -count -modes=n,v c <count>:sidebar!<Space>Console<Return>
-map -count -modes=n,v <C-S-B> <count>:toolbartoggle<Space>Bookmarks<Space>Toolbar<Return>
-set editor='C:\\Program\ Files\ (x86)\\Vim\\vim73\\gvim.exe -f +<line> +"sil! call cursor(0, <column>)" <file>'
-set fbwhitelist=grooveshark.com,youtube.com
+
+" dev
+set! browser.dom.window.dump.enabled=true
+set! devtools.errorconsole.enabled=true
+
+" don't do anything until i say so
+set followhints=1
+
+" \ is too far
+"set mapleader=,
+" but keep it anyway
+map \\ <leader>
+
+" toggle console sidebar
+noremap C :sidebar! Console<CR>
+
+" toggle bookmarks toolbar
+noremap <C-S-B> :toolbartoggle Bookmarks Toolbar<CR>
+" go to previous tab w/ .
+noremap <C-.> <C-^>
+noremap <Leader>. <C-^>
+
+" stop destroying pages on accident
+" noremap -silent d <Nop>
+
+" change tabs w/ h/l
+noremap -count <C-h> -builtin <count><C-p>
+noremap -count <C-l> -builtin <count><C-n>
+" change tabs with j/k
+noremap -count <Leader>j -builtin <count><C-p>
+noremap -count <Leader>k -builtin <count><C-n>
+
+" move tabs with h/l
+noremap <leader>h <Esc>:tabmove! -1<CR>
+noremap <leader>l <Esc>:tabmove! +1<CR>
+
+" move faster w/ j/k
+noremap j 3j
+noremap k 3k
+noremap J <C-f>
+noremap K <C-b>
+
+" move slower w/ <C-d>/<C-u>
 set scroll=10
+
+" don't get caught by auto focus
+set strictfocus=*:moderate
+
+" what to complete w/ :open
+set complete=location,file,bookmark,history
+
+" show fewer
+set maxitems=10
+
+" open :help in new tab
+set newtab=help
+
+" add name to input hint
+set hintinputs+=name
+
+set showtabline=multitab
+" hide tabline
+noremap <Leader><n><t> :set showtabline=never<CR>
+noremap <Leader><t> :set showtabline=always<CR>
+
+" New Hintmode ;e for form elements only.
+set extendedhinttags&
+set extendedhinttags+=[e]:input:not([type=hidden]),textarea,button,select
+
+" Form fields only hint mode
+javascript <<EOF
+(function(){
+if (!hints.modes["e"]){
+    hints.addMode("e", "Focus form fields", function (elem) { buffer.followLink(elem, dactyl.CURRENT_TAB); });
+}
+})();
+EOF
+
+" FlashBlock: toggle for current site
+map -silent <A-f> :flashtoggle<CR>
+" FlashBlock: add site to whitelist
+map <A-S-F> :set fbwhitelist!=
+" Flashblock whitelist
+set fbwhitelist=mog.com,grooveshark.com,youtube.com
+
+" NoScript: permanently allow site
+map <A-s> :set noscript-sites!=
+" NoScript: temporarily allow site
+map <A-S-S> :set noscript-tempsites!=
+" NoScript: untrust site
+map <C-A-s> :set noscript-untrusted!=
+" NoScript: show full url
+set noscript-list=address
+
+command! broken -javascript dactyl.echo(<span>testword</span>);
+
+command! chrome -description='open current location in Chrome' execute "!chromium " + window.content.document.location.href
+
+command! mail -description='E-mail $1' -nargs=1 :js window.content.document.location.href = "mailto:"+<q-args>;
+
+command! read -description=;Pretty print page w/ InstaPaper' :open javascript:function%20iptxt(){var%20d=document;try{if(!d.body)throw(0);window.location='http://www.instapaper.com/text?u='+encodeURIComponent(d.location.href);}catch(e){alert('Please%20wait%20until%20the%20page%20has%20loaded.');}}iptxt();void(0)
 
 " vim: set ft=pentadactyl:

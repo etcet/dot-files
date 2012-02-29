@@ -7,6 +7,7 @@ var INFO =
         summary="JavaScript completion enhancements"
         xmlns={NS}>
     <author email="maglione.k@gmail.com">Kris Maglione</author>
+    <author email="chris@etcet.net">Chris James</author>
     <license href="http://people.freebsd.org/~phk/">BEER-WARE</license>
     <project name="Pentadactyl" min-version="1.0"/>
     <p>
