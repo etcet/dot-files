@@ -2,6 +2,7 @@ set softtabstop=2
 set shiftwidth=2
 set tabstop=2
 set expandtab
+set cursorline
 
 syntax on
 
@@ -24,7 +25,12 @@ Bundle 'tpope/vim-fugitive',
 Bundle 'Lokaltog/vim-powerline',
 Bundle 'majutsushi/tagbar.git',
 Bundle 'wincent/Command-T',
+Bundle 'Valloric/YouCompleteMe',
+Bundle 'Lokaltog/vim-easymotion'
+
 let g:CommandTScanDotDirectories=1
+
+"let g:EasyMotion_leader_key = '<Leader><Leader>'
 
 filetype plugin indent on
 
@@ -42,3 +48,16 @@ endif
 "tagbar
 let g:tagbar_usearrows = 1
 nnoremap <leader>l :TagbarToggle<CR>
+
+"python
+autocmd BufRead *.py set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 expandtab
+
+" Session save/restore
+nmap SQ <ESC>:mksession! .vimsession<CR>:wqa<CR>
+function! RestoreSession()
+	if argc() == 0 "vim called without arguments
+		execute 'source .vimsession'
+	end
+endfunction
+autocmd VimEnter * call RestoreSession()
+
