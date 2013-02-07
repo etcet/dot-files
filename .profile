@@ -20,3 +20,5 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+export CHROMIUM_USER_FLAGS="--disk-cache-dir=/tmp"
