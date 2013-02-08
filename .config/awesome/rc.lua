@@ -11,7 +11,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 -- Dynamic tagging
--- require("eminent")
+require("eminent")
 -- Volume widget
 -- require("volume")
 
@@ -40,12 +40,12 @@ do
 end
 -- }}}
 
-function run_once(prg)
-  awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. ")")
+function run_once(prg, params)
+  awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. " " .. params .. ")")
 end
 
-run_once("parcellite")
-run_once("cbatticon -i symbolic")
+run_once("parcellite", "")
+run_once("cbatticon", "-i symbolic")
 
 
 -- {{{ Variable definitions
@@ -67,7 +67,6 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
@@ -78,7 +77,8 @@ local layouts =
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
+    awful.layout.suit.floating
 }
 -- }}}
 
