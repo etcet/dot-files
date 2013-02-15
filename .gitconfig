@@ -1,3 +1,5 @@
 [user]
 	name = etcet
 	email = git@etcet.net
+[core]
+	editor = gvim -f

@@ -4,6 +4,7 @@
 [keybindings]
 [profiles]
   [[default]]
+    visible_bell = True
     scrollback_infinite = True
 [layouts]
   [[default]]

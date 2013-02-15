@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo pacman -S cmake ruby
+sudo pacman -S cmake ruby ctags
 # for YouCompleteMe
 tmp_dir=$(mktemp -d)
 cd "$tmp_dir"
