@@ -54,3 +54,7 @@ say() { if [[ "${1}" =~ -[a-z]{2} ]]; then local lang=${1#-}; local text="${*#$1
 EDITOR=vim; export EDITOR
 
 alias paur="PACMAN=pacmatic nice packer -Syu"
+alias net_down="sudo ip link set net0 down"
+alias net_up="sudo ip link set net0 up"
+
+export HISTIGNORE="sss*:&" 
